@@ -1,0 +1,12 @@
+{% extends 'dodemo/base.html' %}
+
+{% block content %}
+
+<form action='' method='post' enctype="multipart/form-data">{% csrf_token %}
+<p>投稿文：<input type='text' name='content'></p>
+<p>画像：<input type='file' name='image'></p>
+<input type='hidden' name='author' value='{{ user.username }}'>
+<input type='submit' value='作成する'>
+</form>
+
+{% endblock content %}

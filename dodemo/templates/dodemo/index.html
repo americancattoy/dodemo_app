@@ -1,0 +1,63 @@
+{% extends 'dodemo/base.html' %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    <h5>どうでもいいね王決定戦</h5>
+</div>
+{% endblock header %}
+{% csrf_token %}
+{% block content %}
+<div class='container'>
+    {% for item in object_index %}
+    <div class="alert alert-success" role="alert">
+        <p>投稿者：{{item.author}}</p>
+        <p>投稿文：{{item.content}}</p>
+        <p><img src='{{item.image.url}}' width=150></p>
+        
+        <a href="#" class="btn btn-primary" role="button" aria-pressed="true">どうでもいいね：{{item.good}}</a>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+<a href="{% url 'account_logout' %}">ログアウト</a>
+
+
+{% endblock %}
+
+<!--
+<ul class="pagination justify-content-center">
+    {% if contents.has_previous %}
+    <li class="page-item">
+        <a class="page-link" href="{% url 'index' %}">&laquo;first</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="{% url 'index' %}{{contents.previous_page_number}}">&laquo;prev</a>
+    </li>
+    {% else%}
+    <li class="page-item">
+        <a class="page-link">&laquo;first</a>
+    <li class="page-item">
+        <a class="page-link">&laquo;prev</a>
+    </li>
+    {% endif %}
+    <li class="page-item">
+        <a class="page-link">{{contents.number}}/{{contents.paginator.num_pages}}</a>
+    </li>
+    {% if contents.has_next %}
+    <li class="page-item">
+        <a class="page-link" href="{% url 'index' %}{{contents.next_page_number}}">next &raquo;</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="{% url 'index' %}{{contents.paginator.num_pages}}">last &raquo;</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+        <a class="page-link">next &raquo;</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link">last &raquo;</a>
+    </li>
+    {% endif %}
+</ul>-->
